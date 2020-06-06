@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<form action="{% url 'post' %}" method="post">
+    {% csrf_token %}
+    <h1>TESTING SECTION!!!</h1>
+    <label for="name">Name</label>
+    <input name="name" type="text"><br>
+    <label for="age">age</label>
+    <input name="age" type="number"><br>
+    <input type="submit" name="submit" value="POST">
+</form>
+<h3>
+    {% for id,val in datas.items %}
+        {{ id }}&nbsp;&nbsp;{{ val }}<br>
+    {% endfor %}
+</h3>
+</body>
+</html>
