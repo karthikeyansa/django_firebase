@@ -11,9 +11,9 @@ def post(request):
             'name':name,
             'age':age
         }
-        result = firebase.post('/testing-9807a/User', data)
+        result = firebase.post('/User', data)
         print(result)
         return redirect(post)
-    result = firebase.get('/testing-9807a/User', '')
+    result = firebase.get('/User', '')
     print(result)
     return render(request, 'mysite/index.html', {'datas': result})
