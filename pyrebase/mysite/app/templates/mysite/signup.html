@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Sign up</title>
+</head>
+<body>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li>
+        <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message.message }}
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+<br>
+<br>
+<center>
+    <div class="container">
+        <form action="{% url 'newuser' %}" method="post" class="form-group">
+        {% csrf_token %}
+            <label for="name">Name</label>
+            <input size="50" type="text" name="name" id="name" class="form-control" required><br>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-control" required><br>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control" required><br>
+            <input type="submit" name="submit" value="submit">
+        </form>
+        <br>
+        <a href="{% url 'signin' %}">Sign In</a>
+    </div>
+</center>
+</body>
+</html>

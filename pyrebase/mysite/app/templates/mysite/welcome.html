@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>welcome</title>
+</head>
+<body>
+Logged in as <strong class="text-primary">{{ email }}</strong>
+<button style="float:right" onclick="location.href='{% url 'logout' %}'">Logout</button>
+<br><br>
+<div class="container">
+    <form action="{% url 'post_report' %}" method="post" class="form-group">
+        {% csrf_token %}
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" class="form-control"><br>
+        <label for="progress">Progress</label>
+        <textarea type="text" name="progress" id="progress" rows="3" class="form-control"></textarea><br>
+        <input type="submit" name="submit" value="Post">
+    </form>
+</div>
+<a href="{% url 'check_report' %}">check report</a>
+<div class="container">
+    {% if tasks %}
+    <ul>
+        {% for task in tasks %}
+        <li>{{ task.title }}&nbsp;&nbsp;{{ task.progress }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+</body>
+</html>
